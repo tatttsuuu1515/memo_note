@@ -35,6 +35,9 @@ class HomeFragment : Fragment() {
         binding.button.setOnClickListener{
 
         }
+        binding.button2.setOnClickListener {
+
+        }
         return root
     }
 
