@@ -9,9 +9,11 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:clickable="true"
         android:src="@drawable/baseline_add_24"
-        tools:layout_editor_absoluteX="275dp"
-        tools:layout_editor_absoluteY="550dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

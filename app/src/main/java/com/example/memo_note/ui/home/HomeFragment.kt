@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.memo_note.R
 import com.example.memo_note.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -27,7 +29,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
+        binding.floatingActionButton.setOnClickListener{
+            // オブジェクト作成
+            val navigation = findNavController()
+            // フラグメントの画面遷移の開始
+            navigation.navigate(R.id.action_navigation_home_to_memo_toroku)
+        }
 
         return root
     }
