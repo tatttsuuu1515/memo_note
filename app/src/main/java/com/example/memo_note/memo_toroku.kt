@@ -6,6 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.memo_note.databinding.FragmentMemoTorokuBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +27,8 @@ class memo_toroku : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    // Firebase Databaseのリファレンスを宣言
+    private lateinit var database: DatabaseReference
 
     // bindhing宣言
     private var _binding: FragmentMemoTorokuBinding? = null
@@ -28,11 +36,14 @@ class memo_toroku : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Firebaseのインスタンスを取得
+        database = FirebaseDatabase.getInstance().reference
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
 
     override fun onCreateView(
 
@@ -41,6 +52,25 @@ class memo_toroku : Fragment() {
     ): View? {
         _binding = FragmentMemoTorokuBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.enterButton.setOnClickListener{
+            val title = binding.memoTitle.text.toString()
+            val content = binding.memoNote.text.toString()
+
+            // 現在の日付を取得
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val currentDate = dateFormat.format(Date())
+
+            // メモ内容と日付をMapに格納
+            val memoDetails = mapOf(
+                "content" to content,
+                "date" to currentDate
+            )
+
+            // タイトルを親ノードとしてデータを保存
+            database.child("memos").child(title).setValue(memoDetails)
+
+        }
 
 
 
