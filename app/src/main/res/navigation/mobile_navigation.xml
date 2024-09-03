@@ -13,6 +13,29 @@
         <action
             android:id="@+id/action_navigation_home_to_memo_toroku"
             app:destination="@id/memo_toroku" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="content"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="currentDate"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="oldtitles"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="isFromMemoToroku"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+        <action
+            android:id="@+id/action_navigation_home_to_memo_edit"
+            app:destination="@id/memo_edit" />
     </fragment>
 
     <fragment
@@ -34,4 +57,20 @@
             android:id="@+id/action_memo_toroku_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/memo_edit"
+        android:name="com.example.memo_note.memo_edit"
+        android:label="fragment_memo_edit"
+        tools:layout="@layout/fragment_memo_edit" >
+        <action
+            android:id="@+id/action_memo_edit_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <argument
+            android:name="oldtitle"
+            app:argType="string" />
+        <argument
+            android:name="oldcontent"
+            app:argType="string" />
+    </fragment>
+
 </navigation>
