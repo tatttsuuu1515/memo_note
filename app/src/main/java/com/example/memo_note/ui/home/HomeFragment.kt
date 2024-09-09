@@ -49,6 +49,8 @@ class HomeFragment : Fragment() {
         content = args.content
         currentDate = args.currentDate
         oldtitle = args.oldtitles
+        isFromMemoToroku = args.isFromMemoToroku
+        isFromMemoEdit = args.isFromMemoEdit
 
     }
     override fun onCreateView(
@@ -72,8 +74,7 @@ class HomeFragment : Fragment() {
 
         // Firebaseからデータを読み込み、UIに表示する
         load()
-        isFromMemoToroku = args.isFromMemoToroku
-        isFromMemoEdit = args.isFromMemoEdit
+
 
         // 画面遷移時に渡された引数がtrueの場合に処理を実行
         if (isFromMemoToroku) {
