@@ -43,22 +43,6 @@ class memo_edit : Fragment() {
         }
         oldtitle = args.oldtitle
         oldcontent = args.oldcontent
-        
-        binding.memoTitleEdit.setText(oldtitle)
-        binding.memoNoteEdit.setText(oldcontent)
-
-        binding.enterButtonEdit.setOnClickListener {
-            // 現在の日付を取得
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-            val currentDate = dateFormat.format(Date())
-
-
-            // 画面遷移
-            val navController = findNavController()
-            val action = memo_torokuDirections.actionMemoTorokuToNavigationHome(title,content,currentDate,"",true)
-            navController.navigate(action)
-
-        }
 
 
     }
@@ -69,6 +53,25 @@ class memo_edit : Fragment() {
     ): View? {
         _binding = FragmentMemoEditBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.memoTitleEdit.setText(oldtitle)
+        binding.memoNoteEdit.setText(oldcontent)
+
+        binding.enterButtonEdit.setOnClickListener {
+
+            // 編集内容読み取り
+            title = binding.memoTitleEdit.text.toString()
+            content = binding.memoNoteEdit.text.toString()
+            // 現在の日付を取得
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val currentDate = dateFormat.format(Date())
+
+            // 画面遷移
+            val navController = findNavController()
+            val action = memo_editDirections.actionMemoEditToNavigationHome(title,content,currentDate, oldtitle,false,true)
+            navController.navigate(action)
+
+        }
 
 
 

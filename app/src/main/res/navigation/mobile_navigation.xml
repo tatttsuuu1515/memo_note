@@ -33,6 +33,10 @@
             android:name="isFromMemoToroku"
             app:argType="boolean"
             android:defaultValue="false"/>
+        <argument
+            android:name="isFromMemoEdit"
+            app:argType="boolean"
+            android:defaultValue="false"/>
         <action
             android:id="@+id/action_navigation_home_to_memo_edit"
             app:destination="@id/memo_edit" />

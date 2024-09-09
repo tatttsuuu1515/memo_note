@@ -66,7 +66,7 @@ class memo_toroku : Fragment() {
 
             // 画面遷移
             val navController = findNavController()
-            val action = memo_torokuDirections.actionMemoTorokuToNavigationHome(title,content,currentDate,"",true)
+            val action = memo_torokuDirections.actionMemoTorokuToNavigationHome(title,content,currentDate,"",true,false)
             navController.navigate(action)
 
         }
