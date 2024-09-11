@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "112775033196",
-    "project_id": "memo-3be24",
-    "storage_bucket": "memo-3be24.appspot.com"
+    "project_number": "654528584772",
+    "firebase_url": "https://memos-14ee4-default-rtdb.firebaseio.com",
+    "project_id": "memos-14ee4",
+    "storage_bucket": "memos-14ee4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:112775033196:android:241b17f49dd42ab6aac349",
+        "mobilesdk_app_id": "1:654528584772:android:81ea67eb3c6510a4ff3011",
         "android_client_info": {
           "package_name": "com.example.memo_note"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC3bXD8b1Dbtnx9SwtU9GAsHZM78sbRgFo"
+          "current_key": "AIzaSyBFKKOhZqjEWdj79ZpTQ0MNkXaTNHE6Ajo"
         }
       ],
       "services": {

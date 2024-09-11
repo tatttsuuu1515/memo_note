@@ -1,6 +1,7 @@
 package com.example.memo_note.ui.home
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -142,15 +144,33 @@ class HomeFragment : Fragment() {
 
                     // 削除ボタンのクリックリスナーを設定
                     deleteButton.setOnClickListener {
-                        // Firebase Realtime Databaseからメモを削除
-                        database.child(title).removeValue().addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                // 削除成功時の処理
-                                load()
-                            } else {
-                                // エラーハンドリング
-                            }
-                        }
+
+                        // 削除確認のアラートを表示する
+                        val alertDialog = AlertDialog.Builder(requireContext())
+                            .setTitle("削除確認")
+                            .setMessage("登録内容を削除します\nよろしいですか？")
+                            .setPositiveButton("削除する", { dialog, which ->
+                                // はいが押された時の挙動
+                                // Firebase Realtime Databaseからメモを削除
+                                database.child(title).removeValue().addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        // 削除成功時の処理
+                                        load()
+                                    } else {
+                                        // エラーハンドリング
+                                    }
+                                }
+                            })
+                            .setNegativeButton("キャンセル", { dialog, which ->
+                                // いいえが押された時の挙動
+                            })
+                            .show()
+
+                        //ボタンのスタイルを変更する
+                        val positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                        positiveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.red)) // 赤色に変更
+
+
                     }
 
                     // LinearLayoutにメモビューを追加
