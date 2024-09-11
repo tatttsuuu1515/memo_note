@@ -72,6 +72,10 @@ class HomeFragment : Fragment() {
             navigation.navigate(R.id.action_navigation_home_to_memo_toroku)
         }
 
+        binding.floatingActionButton2.setOnClickListener {
+            load()
+        }
+
         // Firebaseからデータを読み込み、UIに表示する
         load()
 

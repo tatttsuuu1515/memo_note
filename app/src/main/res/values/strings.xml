@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">memo_note</string>
+    <string name="app_name">メモ帳</string>
     <string name="title_home">メモ</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
