@@ -69,11 +69,14 @@ class HomeFragment : Fragment() {
         database = FirebaseDatabase.getInstance().reference.child("memos")
 
 
+        // メモ追加ボタンが押された時の処理
         binding.floatingActionButton.setOnClickListener {
+            // 登録画面へ遷移
             val navigation = findNavController()
             navigation.navigate(R.id.action_navigation_home_to_memo_toroku)
         }
 
+        // 更新ボタンがクリックされた時にデータベースの再読取りを行い画面を更新する
         binding.floatingActionButton2.setOnClickListener {
             load()
         }
@@ -107,6 +110,10 @@ class HomeFragment : Fragment() {
     }
 
 
+    /*機能：realtime database から情報を読み取り画面を更新する関数
+      引数　:なし
+      戻り値:なし
+    */
     private fun load() {
         database.addListenerForSingleValueEvent(object : ValueEventListener {
             @SuppressLint("SetTextI18n")
@@ -132,7 +139,7 @@ class HomeFragment : Fragment() {
                     contentView.text = content
                     dateView.text = "作成日時：$date"
 
-                    // 編集ボタンにクリックリスナーを設定
+                    // 編集ボタンクリック時の動作
                     editButton.setOnClickListener {
                         // 編集ボタンがクリックされたときにも同じ処理を実行
                         val selectedTitle = titleView.text.toString()
@@ -142,7 +149,7 @@ class HomeFragment : Fragment() {
                         navController.navigate(action)
                     }
 
-                    // 削除ボタンのクリックリスナーを設定
+                    // 削除ボタンのクリック時の動作
                     deleteButton.setOnClickListener {
 
                         // 削除確認のアラートを表示する
@@ -173,7 +180,7 @@ class HomeFragment : Fragment() {
 
                     }
 
-                    // LinearLayoutにメモビューを追加
+                    // メモビューを追加
                     linearLayout.addView(memoView)
                 }
             }
@@ -184,6 +191,12 @@ class HomeFragment : Fragment() {
         })
     }
 
+    /*機能：メモ内容を変更するための関数
+      引数　:oldTitle:変更前のタイトル
+           :newTitle:変更後のタイトル
+           :newContent 変更後のメモ内容
+      戻り値:なし
+    */
     fun updateMemo(oldTitle: String, newTitle: String, newContent: String) {
         val database = FirebaseDatabase.getInstance().reference
 

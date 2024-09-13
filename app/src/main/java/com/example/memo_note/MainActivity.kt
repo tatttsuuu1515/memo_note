@@ -24,10 +24,13 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_setting
-            )
+                R.id.navigation_home )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
+
+    // 戻るボタンを機能させるため
+    override fun onSupportNavigateUp()
+            = findNavController(R.id.nav_host_fragment_activity_main).navigateUp()
 }

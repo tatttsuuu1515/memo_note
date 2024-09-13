@@ -54,9 +54,11 @@ class memo_edit : Fragment() {
         _binding = FragmentMemoEditBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // 編集前データを入力欄に表示
         binding.memoTitleEdit.setText(oldtitle)
         binding.memoNoteEdit.setText(oldcontent)
 
+        // 変更の確定ボタンの動作
         binding.enterButtonEdit.setOnClickListener {
 
             // 編集内容読み取り

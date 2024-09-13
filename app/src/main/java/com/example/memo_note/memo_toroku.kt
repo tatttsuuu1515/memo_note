@@ -56,6 +56,7 @@ class memo_toroku : Fragment() {
 
         binding.enterButton.setOnClickListener {
 
+            // それぞれ変数に格納
             val title = binding.memoTitle.text.toString()
             val content = binding.memoNote.text.toString()
 
